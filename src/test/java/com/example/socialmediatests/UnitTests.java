@@ -7,6 +7,7 @@ import com.example.socialmedia.User;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -18,7 +19,7 @@ public class UnitTests {
 	User charles = new User("Charles");
 	
 	Message message1 = new Message("Hello, social media users!", matt);
-	Message message2 = new Message("Isn't is all so wonderful?!", abby);
+	Message message2 = new Message("Isn't it all so wonderful?!", abby);
 	Message message3 = new Message("Indeed, Indeed", charles);
 	Message message4 = new Message("I can see a lizard!", matt);
 	Message message5 = new Message("It is climbing up the window!", matt);
@@ -40,7 +41,10 @@ public class UnitTests {
 	
 	@Test
 	public void testMessageDate() {
-		assertEquals(new Date(), message1.getDate());
+		SimpleDateFormat formatter = new SimpleDateFormat("MM-dd-yyyy");
+		Date today = new Date();
+		
+		assertEquals(formatter.format(today), formatter.format(message1.getDate()));
 	}
 	
 	@Test
